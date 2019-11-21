@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Wall } from './entities/wall.entities';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,9 +7,4 @@ import { Wall } from './entities/wall.entities';
 export class AppComponent {
   title = 'Minesweeper';
 
-  wall: Wall;
-
-  constructor() {
-    this.wall = new Wall(10, 5);
-  }
 }

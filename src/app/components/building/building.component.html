@@ -1,0 +1,13 @@
+<div class="building">
+    <table>
+        <tr *ngFor="let row of wall.block; index as y">
+          <td
+            class="building__block"
+            *ngFor="let block of row; index as x"
+          >
+            <!-- <div>{{ block.proximityMines }}</div> -->
+            <div>{{ block.mine }}</div>
+          </td>
+        </tr>
+    </table>
+</div>

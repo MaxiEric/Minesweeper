@@ -22,12 +22,13 @@ export class Wall {
             }
         }
         console.log('Block structure to form the wall', this.block);
+
+        // TODO it may happen that they touch the same value and mines are lost
         for (let i = 0; i < mines; i++) {
             const y = Math.floor(Math.random() * this.block.length);
             const x = Math.floor(Math.random() * this.block[y].length);
             this.block[y][x].mine = true;
         }
-        console.log('mineCount: ', this.mineCount);
 
         for (let y = 0; y < size; y++) {
             for (let x = 0; x < size; x++) {
@@ -49,6 +50,7 @@ export class Wall {
             }
         }
         this.remainingBlocks = size * size - this.mineCount;
+        console.log('mineCount: ', this.mineCount);
         console.log('remainingBlocks: ', this.remainingBlocks);
     }
 }
