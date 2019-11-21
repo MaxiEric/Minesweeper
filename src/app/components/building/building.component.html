@@ -1,4 +1,8 @@
 <div class="building">
+    <button (click)="startAgain()">Empezar nuevamente</button>
+    <div>
+      <h3>Tiempo corriendo: <span>{{ time }}</span></h3>
+    </div>
     <table>
       <tr *ngFor="let row of wall.blocks; index as y">
         <td
@@ -19,5 +23,3 @@
       </tr>
   </table>
 </div>
-
-<button (click)="startAgain()">Empezar nuevamente</button>
