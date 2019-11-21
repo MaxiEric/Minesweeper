@@ -16,9 +16,15 @@ export class BuildingComponent {
   }
 
   public checkBlock( block: Block) {
-    console.log('checkBlock block: ', block);
     const resultCheckBlock = this.wall.checkBlock(block);
-    resultCheckBlock === 'gameover' ? alert('You lose') : alert('you win');
+    resultCheckBlock === 'gameover' ? alert('You lose') : resultCheckBlock === 'win' ? alert('you win'):'';
   }
 
+  public flag(block: Block){
+    block.status === 'flag' ? block.status = 'open' : block.status = 'flag';
+  }
+
+  public startAgain(){
+    this.wall = new Wall(10, 5);
+  }
 }

@@ -1,15 +1,23 @@
 <div class="building">
     <table>
-        <tr *ngFor="let row of wall.blocks; index as y">
-          <td
-            class="building__block"
-            *ngFor="let block of row; index as x"
-            (click)="checkBlock(block)"
-          >
-            <!-- <div>{{ block.proximityMines }}</div> -->
-            <div>{{block.mine}}</div>
-            <div *ngIf="block.status === 'clear' && !block.mine">{{ block.proximityMines }}</div>
-          </td>
-        </tr>
-    </table>
+      <tr *ngFor="let row of wall.blocks; index as y">
+        <td
+          class="building__block"
+          *ngFor="let block of row; index as x"
+          (click)="checkBlock(block)"
+          (contextmenu)="$event.preventDefault(); flag(block)"
+        >
+          <!-- <div>{{ block.proximityMines }}</div> -->
+          <div *ngIf="block.status === 'clear' && !block.mine">{{ block.proximityMines }}</div>
+          <div *ngIf="block.status === 'flag'">
+            <img src="../assets/icons/bandera.svg" width="15px" height="15px" alt="bandera">
+          </div>
+          <div *ngIf="block.mine && block.status === 'clear'">
+            <img src="../assets/icons/bomba.svg" width="15px" height="15px" alt="bomba">
+          </div>
+        </td>
+      </tr>
+  </table>
 </div>
+
+<button (click)="startAgain()">Empezar nuevamente</button>
