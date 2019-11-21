@@ -28,5 +28,27 @@ export class Wall {
             this.block[y][x].mine = true;
         }
         console.log('mineCount: ', this.mineCount);
+
+        for (let y = 0; y < size; y++) {
+            for (let x = 0; x < size; x++) {
+                let adjacentMines = 0;
+                for (const peer of fellowBlock) {
+                    if (
+                        this.block[y + peer[0]] &&
+                        this.block[y + peer[0]][x + peer[1]] &&
+                        this.block[y + peer[0]][x + peer[1]].mine
+                    ) {
+                        adjacentMines++;
+                    }
+                }
+                this.block[y][x].proximityMines = adjacentMines;
+
+                if (this.block[y][x].mine) {
+                    this.mineCount++;
+                }
+            }
+        }
+        this.remainingBlocks = size * size - this.mineCount;
+        console.log('remainingBlocks: ', this.remainingBlocks);
     }
 }
